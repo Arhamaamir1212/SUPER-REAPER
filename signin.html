@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SUPER REAPER - Sign In</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-y: auto;
+    background:
+        radial-gradient(circle at 15% 20%, #ff00cc55, transparent 35%),
+        radial-gradient(circle at 85% 25%, #0066ff55, transparent 35%),
+        radial-gradient(circle at 50% 100%, #8a00ff55, transparent 45%),
+        linear-gradient(135deg, #070018, #050525 50%, #000b25);
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    width: 450px;
+    height: 450px;
+    left: -180px;
+    top: 80px;
+    background: #ff00cc;
+    filter: blur(170px);
+    opacity: .22;
+    z-index: -1;
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    width: 450px;
+    height: 450px;
+    right: -180px;
+    bottom: 30px;
+    background: #0066ff;
+    filter: blur(170px);
+    opacity: .22;
+    z-index: -1;
+}
+
+.container {
+    width: 100%;
+    max-width: 600px;
+    padding: 15px 20px;
+    text-align: center;
+}
+
+.logo-image {
+    width: 260px;
+    max-width: 70%;
+    display: block;
+    margin: 0 auto 10px;
+    filter:
+        drop-shadow(0 0 8px #ff00cc)
+        drop-shadow(0 0 15px #0066ff);
+}
+
+.card {
+    padding: 25px;
+    border-radius: 20px;
+    background: rgba(5, 5, 35, .84);
+    border: 2px solid transparent;
+    background:
+        linear-gradient(#08082b, #08082b) padding-box,
+        linear-gradient(90deg, #ff00dd, #7b35ff, #008cff) border-box;
+    box-shadow:
+        0 0 20px #ff00cc44,
+        0 0 40px #0066ff33;
+    backdrop-filter: blur(12px);
+}
+
+.card h2 {
+    font-size: 34px;
+    margin-bottom: 7px;
+    background: linear-gradient(90deg, #ff00dd, #8b5cff, #008cff);
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.subtitle {
+    color: #aaaacc;
+    margin-bottom: 22px;
+    font-size: 15px;
+}
+
+.input-box {
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.input-box input {
+    width: 100%;
+    height: 52px;
+    padding: 0 22px;
+    border-radius: 15px;
+    border: 1px solid #6b3acb;
+    background: rgba(8, 8, 45, .9);
+    color: white;
+    font-size: 16px;
+    outline: none;
+    box-shadow: inset 0 0 15px #00000055;
+    transition: .3s;
+}
+
+.input-box input:focus {
+    border-color: #b000ff;
+    box-shadow: 0 0 12px #ff00cc88, 0 0 22px #0066ff44;
+}
+
+.input-box input::placeholder {
+    color: #9999cc;
+}
+
+.password-icon {
+    position: absolute;
+    right: 18px;
+    top: 14px;
+    color: #aaaaff;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 5px 2px 20px;
+    color: #aaaacc;
+    font-size: 13px;
+}
+
+.remember {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.remember input {
+    accent-color: #b000ff;
+}
+
+.forgot {
+    color: #168cff;
+    text-decoration: none;
+}
+
+.forgot:hover {
+    color: #ff00dd;
+}
+
+/* SIGN IN BUTTON */
+
+.signin-btn {
+    width: 100%;
+    height: 52px;
+    border: none;
+    border-radius: 15px;
+    color: white;
+    font-size: 19px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    cursor: pointer;
+    background: linear-gradient(90deg, #ff00cc, #9d25ff, #006eff);
+    box-shadow: 0 0 15px #ff00cc88, 0 0 30px #006eff44;
+    transition: .3s;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.signin-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 20px #ff00cc, 0 0 40px #006eff88;
+}
+
+.divider {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin: 22px 0 15px;
+    color: #aaaacc;
+    font-size: 13px;
+}
+
+.divider::before,
+.divider::after {
+    content: "";
+    height: 1px;
+    flex: 1;
+    background: #484878;
+}
+
+.create-text {
+    color: #aaaacc;
+    font-size: 14px;
+}
+
+.create-text a {
+    display: block;
+    margin-top: 8px;
+    color: #d735ff;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.create-text a:hover {
+    color: #008cff;
+    text-shadow: 0 0 10px #008cff;
+}
+
+.hacker-presents {
+    margin-top: 15px;
+    text-align: center;
+    font-family: "Courier New", monospace;
+    letter-spacing: 4px;
+    animation: hackerGlow 2s infinite alternate;
+}
+
+.hacker-presents span {
+    display: block;
+    font-size: 22px;
+    font-weight: bold;
+    color: #00ff88;
+    text-shadow: 0 0 5px #00ff88, 0 0 15px #00ff88, 0 0 25px #00ff88;
+}
+
+.hacker-presents b {
+    display: block;
+    margin-top: 4px;
+    font-size: 12px;
+    color: #00ccff;
+    letter-spacing: 6px;
+    text-shadow: 0 0 5px #00ccff, 0 0 12px #0066ff;
+}
+
+@keyframes hackerGlow {
+    from {
+        opacity: .7;
+        transform: scale(.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+footer {
+    margin-top: 20px;
+    color: #777799;
+    font-size: 12px;
+}
+
+footer a {
+    color: #9999cc;
+    text-decoration: none;
+    margin: 0 8px;
+}
+
+footer a:hover {
+    color: #ff00dd;
+}
+
+@media (max-width: 600px) {
+    .container {
+        padding: 12px 15px;
+    }
+
+    .logo-image {
+        width: 220px;
+    }
+
+    .card {
+        padding: 20px;
+    }
+
+    .card h2 {
+        font-size: 29px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- SUPER REAPER LOGO -->
+    <div class="logo">
+        <img src="super-reaper-logo.png"
+             class="logo-image"
+             alt="SUPER REAPER">
+    </div>
+
+    <!-- SIGN IN CARD -->
+    <div class="card">
+
+        <h2>Welcome Back</h2>
+
+        <p class="subtitle">
+            Enter the darkness again.
+        </p>
+
+        <div class="input-box">
+            <input
+                type="text"
+                id="username"
+                placeholder="Username"
+                required>
+        </div>
+
+        <div class="input-box">
+            <input
+                type="password"
+                id="password"
+                placeholder="Password"
+                required>
+
+            <span
+                class="password-icon"
+                onclick="showPassword()">👁</span>
+        </div>
+
+        <div class="options">
+
+            <label class="remember">
+                <input type="checkbox" id="remember">
+                Remember me
+            </label>
+
+            <a href="#" class="forgot" onclick="forgotPassword()">
+                Forgot Password?
+            </a>
+
+        </div>
+
+        <!-- SIGN IN GOES TO GAME.HTML -->
+        <a href="games.html" class="signin-btn">
+            SIGN IN &nbsp; →
+        </a>
+
+        <div class="divider">
+            New to Super Reaper?
+        </div>
+
+        <div class="create-text">
+
+            Don't have an account?
+
+            <a href="create.html">
+                CREATE ACCOUNT
+            </a>
+
+        </div>
+
+    </div>
+
+    <!-- MR.HACKER PRESENTS -->
+    <div class="hacker-presents">
+        <span>MR.HACKER</span>
+        <b>PRESENTS</b>
+    </div>
+
+    <footer>
+
+        <a href="#">Terms & Conditions</a>
+        |
+        <a href="#">Privacy Policy</a>
+        |
+        <a href="#">Contact Us</a>
+
+    </footer>
+
+</div>
+
+<script>
+
+function showPassword() {
+
+    const input = document.getElementById("password");
+    const icon = document.querySelector(".password-icon");
+
+    if (input.type === "password") {
+
+        input.type = "text";
+        icon.textContent = "🙈";
+
+    } else {
+
+        input.type = "password";
+        icon.textContent = "👁";
+
+    }
+}
+
+function forgotPassword() {
+
+    alert("Password recovery will be added later.");
+
+}
+
+</script>
+
+</body>
+</html>

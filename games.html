@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>SUPER REAPER - All Games</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;font-family:Arial,sans-serif}html{scroll-behavior:smooth}body{color:#fff;min-height:100vh;background:radial-gradient(circle at 10% 20%,#ff00cc33,transparent 28%),radial-gradient(circle at 90% 30%,#006eff33,transparent 30%),linear-gradient(135deg,#03000e,#060529 55%,#020b20)}
+header{height:88px;display:flex;align-items:center;gap:25px;padding:8px 35px;background:rgba(2,2,22,.96);border-bottom:2px solid #244cff;box-shadow:0 0 25px #006eff44;position:sticky;top:0;z-index:10}.logo img{height:72px;width:auto;filter:drop-shadow(0 0 10px #006eff)}nav{display:flex;gap:7px;flex:1}nav a{color:#c5baff;text-decoration:none;padding:13px 16px;border-radius:16px;font-size:14px}nav a:hover,nav a.active{color:#fff;background:linear-gradient(90deg,#9c00ff,#5b27ff);box-shadow:0 0 18px #8b00ff88}.search{position:relative;width:240px}.search span{position:absolute;left:15px;top:11px;color:#bda9ff}.search input,.toolbar input{width:100%;height:44px;border-radius:22px;border:1px solid #4930a8;background:#09092c;color:#fff;padding:0 18px 0 40px;outline:none}
+
+main{max-width:1100px;margin:auto;padding:30px 25px}.hero{min-height:330px;border:2px solid #633bff;border-radius:22px;overflow:hidden;display:grid;grid-template-columns:40% 60%;background:#06062a;box-shadow:0 0 30px #006eff55,0 0 25px #ff00cc33}.hero-info{padding:30px 38px;display:flex;flex-direction:column;justify-content:center}.kicker{color:#ff2cff;font-weight:bold;margin-bottom:12px}.hero h1{font-size:45px}.hero p{color:#bbb7e8;line-height:1.5;margin:10px 0 17px}.tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}.tag{padding:6px 13px;border:1px solid #9d24ff;border-radius:18px;color:#dba7ff;font-size:11px}.primary,.small-btn{display:inline-block;color:#fff;text-decoration:none;font-weight:bold;background:linear-gradient(90deg,#ff00cc,#006eff);box-shadow:0 0 18px #ff00cc55}.primary{width:max-content;padding:13px 24px;border-radius:14px}.hero-img{background:url('featured-minecraft.jpg') center/cover no-repeat}
+
+.toolbar{margin:28px 0;display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:12px 15px;border:1px solid #26318a;border-radius:18px;background:#05052a}.toolbar input{width:300px}.filter-label{color:#aaa8d6;margin-left:auto}.filter{border:1px solid #304aa8;background:#0a1038;color:#ddd8ff;padding:10px 16px;border-radius:20px;cursor:pointer}.filter.active,.filter:hover{background:linear-gradient(90deg,#8d00ff,#5c24ff);color:#fff}
+
+.section-title{display:flex;align-items:center;gap:15px;margin:18px 0 22px}.section-title h2{font-size:35px;font-style:italic;background:linear-gradient(90deg,#ff00e6,#006eff);-webkit-background-clip:text;color:transparent}.line{height:2px;flex:1;background:linear-gradient(90deg,#ff00dd,#006eff,transparent)}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}.card{background:linear-gradient(180deg,#0a0b39,#05051f);border:1px solid #6d24ff;border-radius:15px;overflow:hidden;box-shadow:0 0 15px #4715a833;transition:.25s}.card:hover{transform:translateY(-5px);box-shadow:0 0 25px #7b00ff77}.card-img{height:180px;background-size:cover;background-position:center}.card-body{padding:14px}.card h3{font-size:18px;margin-bottom:9px}.card p{font-size:12px;color:#aaa9d0;line-height:1.5;margin:10px 0}.card .tags{margin:0 0 8px;gap:5px}.card .tag{padding:4px 8px;font-size:10px}.players{font-size:12px;color:#d5caff;margin:10px 0}.small-btn{display:block;text-align:center;padding:10px;border-radius:10px;font-size:13px}
+
+.coming{margin:35px 0 25px;border:1px solid #244cff;border-radius:20px;min-height:190px;display:grid;grid-template-columns:52% 48%;overflow:hidden;background:#06062b}.coming-info{padding:28px 35px}.coming-info h2{font-size:31px;font-style:italic;color:#b52cff}.coming-info p{color:#b7b5d7;margin:13px 0;line-height:1.5}.coming-img{background:url('coming-soon.jpg') center/cover}
+
+.quick{display:grid;grid-template-columns:repeat(5,1fr);border-top:1px solid #282b77;border-bottom:1px solid #282b77;margin:0 -25px;padding:20px 25px;background:#050520}.quick div{text-align:center;border-right:1px solid #252660;padding:10px}.quick div:last-child{border:0}.icon{font-size:28px;color:#d92cff}.quick b{display:block;margin:7px 0;font-size:12px;color:#d7cfff}.quick span{font-size:10px;color:#8f8daf}footer{max-width:1100px;margin:auto;padding:25px;display:flex;justify-content:space-between;color:#77779d;font-size:12px}footer a{color:#aaa6d2;text-decoration:none;margin:0 8px}
+
+@media(max-width:900px){header{padding:8px 15px;gap:12px}nav a{padding:10px 8px;font-size:12px}.search{width:180px}.grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:650px){header{height:auto;flex-wrap:wrap;justify-content:center}nav{justify-content:center;order:3;flex-basis:100%}.search{width:100%}.hero,.coming{grid-template-columns:1fr}.hero-img{min-height:200px}.coming-img{height:150px}.grid{grid-template-columns:1fr}.toolbar input{width:100%}.filter-label{margin-left:0}.quick{grid-template-columns:repeat(2,1fr)}footer{flex-direction:column;gap:15px;text-align:center}}
+</style></head>
+
+<body>
+
+<header>
+<a class="logo" href="games.html"><img src="super-reaper-logo.png" alt="SUPER REAPER"></a>
+
+<nav>
+<a href="#">⌂ Home</a>
+<a class="active" href="games.html">🎮 All Games</a>
+<a href="about.html">♟ About Us</a>
+<a href="#">✉ Contact</a>
+</nav>
+
+<div class="search">
+<span>⌕</span>
+<input id="topSearch" placeholder="Search games..." oninput="searchGames(this.value)">
+</div>
+</header>
+
+<main>
+
+<section class="hero">
+<div class="hero-info">
+<div class="kicker">★ FEATURED GAME</div>
+<h1>MINECRAFT</h1>
+<p>Build · Explore · Survive</p>
+
+<div class="tags">
+<span class="tag">Survival</span>
+<span class="tag">Creative</span>
+<span class="tag">Sandbox</span>
+</div>
+
+<p>Craft, build, and survive in a world of endless possibilities. Your imagination is the only limit!</p>
+
+<a class="primary" href="minecraft.html">EXPLORE GAME &nbsp; →</a>
+</div>
+
+<div class="hero-img"></div>
+</section>
+
+
+<div class="toolbar">
+<input id="gameSearch" placeholder="⌕  Search games..." oninput="searchGames(this.value)">
+<span class="filter-label">Filter by Genre:</span>
+
+<button class="filter active" onclick="filterGames('all',this)">All</button>
+<button class="filter" onclick="filterGames('Survival',this)">Survival</button>
+<button class="filter" onclick="filterGames('Strategy',this)">Strategy</button>
+<button class="filter" onclick="filterGames('Action',this)">Action</button>
+<button class="filter" onclick="filterGames('Sandbox',this)">Sandbox</button>
+</div>
+
+
+<div class="section-title">
+<h2>🎮 ALL GAMES</h2>
+<div class="line"></div>
+</div>
+
+
+<section class="grid" id="gameGrid">
+
+<!-- MINECRAFT -->
+<article class="card" data-name="minecraft" data-genres="Survival Creative Sandbox">
+<div class="card-img" style="background-image:url('minecraft-card.jpg')"></div>
+
+<div class="card-body">
+<h3>MINECRAFT</h3>
+
+<div class="tags">
+<span class="tag">Survival</span>
+<span class="tag">Creative</span>
+<span class="tag">Sandbox</span>
+</div>
+
+<p>Craft, build, and survive in a world of endless possibilities.</p>
+
+<div class="players">♟ 1-4 Players</div>
+
+<a class="small-btn" href="minecraft.html">EXPLORE GAME →</a>
+</div>
+</article>
+
+
+<!-- ZOMBIE APOCALYPSE -->
+<article class="card" data-name="zombie apocalypse" data-genres="Action Shooter Horror">
+
+<div class="card-img" style="background-image:url('zombie-card.jpg')"></div>
+
+<div class="card-body">
+
+<h3>ZOMBIE APOCALYPSE</h3>
+
+<div class="tags">
+<span class="tag">Action</span>
+<span class="tag">Shooter</span>
+<span class="tag">Horror</span>
+</div>
+
+<p>
+Survive the outbreak, fight the undead, and find a way to escape before it's too late!
+</p>
+
+<div class="players">♟ 1-8 Players</div>
+
+<!-- FIXED LINK -->
+<a class="small-btn" href="zombie.html">EXPLORE GAME →</a>
+
+</div>
+</article>
+
+
+<!-- LUDO -->
+<article class="card" data-name="ludo strike" data-genres="Strategy Creative">
+
+<div class="card-img" style="background-image:url('ludo-card.jpg')"></div>
+
+<div class="card-body">
+<h3>LUDO STRIKE</h3>
+
+<div class="tags">
+<span class="tag">Strategy</span>
+<span class="tag">Creative</span>
+</div>
+
+<p>
+Outsmart your opponents, make your moves and be the first to reach victory!
+</p>
+
+<div class="players">♟ 2-4 Players</div>
+
+<a class="small-btn" href="ludo.html">EXPLORE GAME →</a>
+</div>
+</article>
+
+
+<!-- GTA -->
+<article class="card" data-name="gta" data-genres="Crime Sandbox Action">
+
+<div class="card-img" style="background-image:url('gta-card.jpg')"></div>
+
+<div class="card-body">
+<h3>GTA</h3>
+
+<div class="tags">
+<span class="tag">Crime</span>
+<span class="tag">Sandbox</span>
+<span class="tag">Action</span>
+</div>
+
+<p>
+Explore the open world, complete missions, drive, and live the ultimate criminal life!
+</p>
+
+<div class="players">♟ 1-4 Players</div>
+
+<a class="small-btn" href="gta.html">EXPLORE GAME →</a>
+</div>
+</article>
+
+</section>
+
+
+<section class="coming">
+
+<div class="coming-info">
+<h2>🎮 COMING SOON</h2>
+
+<p><b>More awesome games are on the way...</b></p>
+
+<p>
+Stay tuned for new adventures, new worlds and more fun coming soon to Super Reaper!
+</p>
+
+<a class="small-btn" style="width:130px" href="#">🔔 STAY TUNED</a>
+</div>
+
+<div class="coming-img"></div>
+
+</section>
+
+
+<section class="quick">
+
+<div>
+<div class="icon">⌕</div>
+<b>Search Games</b>
+<span>Find your favorite games quickly.</span>
+</div>
+
+<div>
+<div class="icon">☷</div>
+<b>Genre Filters</b>
+<span>Filter by Survival, Strategy, Action, Sandbox and more.</span>
+</div>
+
+<div>
+<div class="icon">☆</div>
+<b>Featured Game</b>
+<span>Highlight a special game at the top.</span>
+</div>
+
+<div>
+<div class="icon">ⓘ</div>
+<b>Game Info</b>
+<span>See players, genre and short descriptions.</span>
+</div>
+
+<div>
+<div class="icon">✦</div>
+<b>New & Coming Soon</b>
+<span>Be the first to know about new games.</span>
+</div>
+
+</section>
+
+</main>
+
+
+<footer>
+
+<div>© 2026 SUPER REAPER</div>
+
+<div>
+<a href="#">About Us</a> |
+<a href="#">Contact</a> |
+<a href="#">Privacy Policy</a> |
+<a href="#">Terms & Conditions</a>
+</div>
+
+<div>Game On. Reaper's On.</div>
+
+</footer>
+
+
+<script>
+
+function searchGames(v){
+
+v=v.toLowerCase().trim();
+
+document.querySelectorAll('.card').forEach(c=>
+c.style.display=!v||c.dataset.name.includes(v)?'':'none'
+);
+
+document.getElementById('topSearch').value=v;
+document.getElementById('gameSearch').value=v;
+
+}
+
+function filterGames(g,b){
+
+document.querySelectorAll('.filter')
+.forEach(x=>x.classList.remove('active'));
+
+b.classList.add('active');
+
+document.querySelectorAll('.card').forEach(c=>
+c.style.display=g==='all'||c.dataset.genres.includes(g)?'':'none'
+);
+
+}
+
+</script>
+
+</body>
+</html>

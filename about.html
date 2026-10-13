@@ -1,0 +1,275 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>SUPER REAPER - About Us</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0;font-family:Arial,sans-serif}
+html{scroll-behavior:smooth}
+body{color:#fff;min-height:100vh;background:radial-gradient(circle at 10% 20%,#ff00cc33,transparent 28%),radial-gradient(circle at 90% 30%,#006eff33,transparent 30%),linear-gradient(135deg,#03000e,#060529 55%,#020b20)}
+
+header{height:88px;display:flex;align-items:center;gap:25px;padding:8px 35px;background:rgba(2,2,22,.96);border-bottom:2px solid #244cff;box-shadow:0 0 25px #006eff44;position:sticky;top:0;z-index:10}
+.logo img{height:72px;width:auto;filter:drop-shadow(0 0 10px #006eff)}
+nav{display:flex;gap:7px;flex:1}
+nav a{color:#c5baff;text-decoration:none;padding:13px 16px;border-radius:16px;font-size:14px}
+nav a:hover,nav a.active{color:#fff;background:linear-gradient(90deg,#9c00ff,#5b27ff);box-shadow:0 0 18px #8b00ff88}
+
+.search{position:relative;width:240px}
+.search span{position:absolute;left:15px;top:11px;color:#bda9ff}
+.search input{width:100%;height:44px;border-radius:22px;border:1px solid #4930a8;background:#09092c;color:#fff;padding:0 18px 0 40px;outline:none}
+
+main{max-width:1100px;margin:auto;padding:30px 25px}
+
+.hero{min-height:330px;border:2px solid #633bff;border-radius:22px;overflow:hidden;display:grid;grid-template-columns:60% 40%;background:#06062a;box-shadow:0 0 30px #006eff55,0 0 25px #ff00cc33}
+.hero-info{padding:35px;display:flex;flex-direction:column;justify-content:center}
+.kicker{color:#ff2cff;font-weight:bold;margin-bottom:12px}
+.hero h1{font-size:45px;font-style:italic}
+.hero p{color:#bbb7e8;line-height:1.7;margin:12px 0}
+.hero-img{background:radial-gradient(circle at center,#9c00ff55,transparent 65%),linear-gradient(135deg,#08082d,#160a43,#061a42);display:flex;align-items:center;justify-content:center;font-size:115px;text-shadow:0 0 35px #006eff}
+.primary,.small-btn{display:inline-block;color:#fff;text-decoration:none;font-weight:bold;background:linear-gradient(90deg,#ff00cc,#006eff);box-shadow:0 0 18px #ff00cc55}
+.primary{width:max-content;padding:13px 24px;border-radius:14px;margin-top:10px}
+
+.section-title{display:flex;align-items:center;gap:15px;margin:30px 0 22px}
+.section-title h2{font-size:35px;font-style:italic;background:linear-gradient(90deg,#ff00e6,#006eff);-webkit-background-clip:text;color:transparent}
+.line{height:2px;flex:1;background:linear-gradient(90deg,#ff00dd,#006eff,transparent)}
+
+.content-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:18px}
+.card{background:linear-gradient(180deg,#0a0b39,#05051f);border:1px solid #6d24ff;border-radius:15px;overflow:hidden;box-shadow:0 0 15px #4715a833;transition:.25s}
+.card:hover{transform:translateY(-4px);box-shadow:0 0 25px #7b00ff77}
+.card-body{padding:25px}
+.card h3{font-size:21px;margin-bottom:15px;color:#fff}
+.card p{font-size:14px;color:#aaa9d0;line-height:1.9;margin:10px 0}
+.card-icon{font-size:55px;margin-bottom:18px}
+.highlight{color:#e19cff;font-weight:bold}
+
+.mission{background:linear-gradient(145deg,#100b3c,#160a32);border-color:#a124ff}
+.mission h3{color:#e19cff}
+
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:20px}
+.stat{padding:23px 15px;text-align:center;background:linear-gradient(180deg,#0a0b39,#05051f);border:1px solid #4930b7;border-radius:15px}
+.stat .icon{font-size:30px;margin-bottom:12px;color:#d92cff}
+.stat h3{font-size:16px;margin-bottom:9px;color:#e3caff}
+.stat p{font-size:12px;color:#aaa9d0;line-height:1.6}
+
+.values{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.value{padding:22px;background:linear-gradient(180deg,#0a0b39,#05051f);border:1px solid #6d24ff;border-radius:15px;transition:.25s}
+.value:hover{transform:translateY(-5px);box-shadow:0 0 22px #7b00ff55}
+.value .icon{font-size:32px;margin-bottom:15px}
+.value h3{font-size:17px;margin-bottom:10px;color:#dba7ff}
+.value p{font-size:12px;line-height:1.8;color:#aaa9d0}
+
+.cta{margin:35px 0 25px;border:1px solid #244cff;border-radius:20px;padding:35px;text-align:center;background:linear-gradient(135deg,#10052e,#080a31,#19072c);box-shadow:0 0 25px #006eff22}
+.cta h2{font-size:30px;font-style:italic;background:linear-gradient(90deg,#ff00e6,#006eff);-webkit-background-clip:text;color:transparent}
+.cta p{color:#b7b5d7;margin:15px auto 22px;line-height:1.7;max-width:650px}
+.small-btn{padding:12px 22px;border-radius:12px;font-size:13px}
+.small-btn:hover,.primary:hover{filter:brightness(1.2)}
+
+.quick{display:grid;grid-template-columns:repeat(5,1fr);border-top:1px solid #282b77;border-bottom:1px solid #282b77;margin:0 -25px;padding:20px 25px;background:#050520}
+.quick div{text-align:center;border-right:1px solid #252660;padding:10px}
+.quick div:last-child{border:0}
+.quick .icon{font-size:28px;color:#d92cff}
+.quick b{display:block;margin:7px 0;font-size:12px;color:#d7cfff}
+.quick span{font-size:10px;color:#8f8daf}
+
+footer{max-width:1100px;margin:auto;padding:25px;display:flex;justify-content:space-between;gap:12px;color:#77779d;font-size:12px}
+footer a{color:#aaa6d2;text-decoration:none;margin:0 8px}
+footer a:hover{color:#ff2cff}
+
+@media(max-width:900px){
+header{padding:8px 15px;gap:12px}
+nav a{padding:10px 8px;font-size:12px}
+.search{width:180px}
+.content-grid{grid-template-columns:1fr}
+}
+@media(max-width:650px){
+header{height:auto;flex-wrap:wrap;justify-content:center}
+nav{justify-content:center;order:3;flex-basis:100%}
+.search{width:100%}
+.hero{grid-template-columns:1fr}
+.hero-img{min-height:170px;grid-row:1;font-size:85px}
+.hero-info{padding:25px}
+.hero h1{font-size:35px}
+.section-title h2{font-size:26px}
+.stats,.values{grid-template-columns:1fr}
+.quick{grid-template-columns:repeat(2,1fr)}
+footer{flex-direction:column;gap:15px;text-align:center}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<a class="logo" href="games.html">
+<img src="super-reaper-logo.png" alt="SUPER REAPER">
+</a>
+
+<nav>
+<a href="index.html">⌂ Home</a>
+<a href="games.html">🎮 All Games</a>
+<a class="active" href="about.html">♟ About Us</a>
+<a href="contact.html">✉ Contact</a>
+</nav>
+
+<div class="search">
+<span>⌕</span>
+<input id="topSearch" placeholder="Search games..."
+onkeydown="if(event.key==='Enter')location.href='games.html'">
+</div>
+</header>
+
+<main>
+
+<section class="hero">
+<div class="hero-info">
+<div class="kicker">★ THE WORLD OF GAMING</div>
+<h1>ABOUT SUPER REAPER</h1>
+<p>Discover our story, explore our vision, and join us on a journey through the world of gaming.</p>
+<p>One website. Countless adventures. Endless possibilities.</p>
+<a class="primary" href="games.html">EXPLORE OUR GAMES &nbsp; →</a>
+</div>
+
+<div class="hero-img">🎮</div>
+</section>
+
+<div class="section-title">
+<h2>♟ WHO WE ARE</h2>
+<div class="line"></div>
+</div>
+
+<section class="content-grid">
+
+<article class="card">
+<div class="card-body">
+<h3>WELCOME TO <span class="highlight">SUPER REAPER</span></h3>
+
+<p>SUPER REAPER is a gaming website built for people who love discovering games, exploring virtual worlds, and finding their next exciting adventure.</p>
+
+<p>From survival and action to strategy and sandbox experiences, we want to bring a variety of gaming interests together in one place.</p>
+
+<p>Our website is growing step by step. We are working to make it more exciting, useful, and enjoyable as we add new games and features.</p>
+</div>
+</article>
+
+<article class="card mission">
+<div class="card-body">
+<div class="card-icon">🌌</div>
+<h3>OUR MISSION</h3>
+<p>Our mission is to make discovering games simple, fun, and exciting. We want every visit to SUPER REAPER to open the door to a new adventure.</p>
+<p><span class="highlight">Game On. Reaper's On.</span></p>
+</div>
+</article>
+
+</section>
+
+<div class="section-title">
+<h2>⚡ OUR VISION</h2>
+<div class="line"></div>
+</div>
+
+<section class="stats">
+
+<div class="stat">
+<div class="icon">🎯</div>
+<h3>DISCOVER</h3>
+<p>Explore games and find your next favourite experience.</p>
+</div>
+
+<div class="stat">
+<div class="icon">⚔️</div>
+<h3>EXPERIENCE</h3>
+<p>Celebrate adventures, challenges, and creative worlds.</p>
+</div>
+
+<div class="stat">
+<div class="icon">🚀</div>
+<h3>IMPROVE</h3>
+<p>Keep growing with new ideas, games, and features.</p>
+</div>
+
+</section>
+
+<div class="section-title">
+<h2>✦ WHAT WE VALUE</h2>
+<div class="line"></div>
+</div>
+
+<section class="values">
+
+<article class="value">
+<div class="icon">🔥</div>
+<h3>FUN & EXCITEMENT</h3>
+<p>We believe gaming should be enjoyable, creative, and full of memorable moments.</p>
+</article>
+
+<article class="value">
+<div class="icon">🌍</div>
+<h3>DISCOVERY</h3>
+<p>Different players enjoy different games. We want to help you find something you love.</p>
+</article>
+
+<article class="value">
+<div class="icon">💜</div>
+<h3>CREATIVITY</h3>
+<p>SUPER REAPER is an evolving project shaped by imagination, learning, and new ideas.</p>
+</article>
+
+</section>
+
+<section class="cta">
+<h2>READY FOR YOUR NEXT ADVENTURE?</h2>
+<p>Explore our games page, discover new worlds, and find your next favourite game. Your adventure starts here!</p>
+<a class="small-btn" href="games.html">🎮 EXPLORE ALL GAMES →</a>
+</section>
+
+<section class="quick">
+<div>
+<div class="icon">⌕</div>
+<b>DISCOVER</b>
+<span>Explore games and adventures.</span>
+</div>
+
+<div>
+<div class="icon">⚔</div>
+<b>ADVENTURE</b>
+<span>Find your next challenge.</span>
+</div>
+
+<div>
+<div class="icon">☆</div>
+<b>OUR VISION</b>
+<span>Gaming for everyone.</span>
+</div>
+
+<div>
+<div class="icon">ⓘ</div>
+<b>ABOUT US</b>
+<span>Learn our story.</span>
+</div>
+
+<div>
+<div class="icon">✦</div>
+<b>COMING SOON</b>
+<span>More features ahead.</span>
+</div>
+</section>
+
+</main>
+
+<footer>
+<div>© 2026 SUPER REAPER</div>
+<div>
+<a href="about.html">About Us</a> |
+<a href="contact.html">Contact</a> |
+<a href="#">Privacy Policy</a> |
+<a href="#">Terms & Conditions</a>
+</div>
+<div>Game On. Reaper's On.</div>
+</footer>
+
+</body>
+</html>
+```

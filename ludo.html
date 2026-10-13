@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>SUPER REAPER - Ludo Strike</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0;font-family:Arial,sans-serif}
+html{scroll-behavior:smooth}
+body{
+color:#fff;
+min-height:100vh;
+background:
+radial-gradient(circle at 10% 20%,#ff00cc33,transparent 28%),
+radial-gradient(circle at 90% 30%,#006eff33,transparent 30%),
+linear-gradient(135deg,#03000e,#060529 55%,#020b20)
+}
+
+header{
+height:88px;
+display:flex;
+align-items:center;
+gap:25px;
+padding:8px 35px;
+background:rgba(2,2,22,.96);
+border-bottom:2px solid #244cff;
+box-shadow:0 0 25px #006eff44;
+position:sticky;
+top:0;
+z-index:10
+}
+
+.logo img{
+height:72px;
+width:auto;
+filter:drop-shadow(0 0 10px #006eff)
+}
+
+nav{
+display:flex;
+gap:7px;
+flex:1
+}
+
+nav a{
+color:#c5baff;
+text-decoration:none;
+padding:13px 16px;
+border-radius:16px;
+font-size:14px
+}
+
+nav a:hover,
+nav a.active{
+color:#fff;
+background:linear-gradient(90deg,#9c00ff,#5b27ff);
+box-shadow:0 0 18px #8b00ff88
+}
+
+.search{
+position:relative;
+width:240px
+}
+
+.search span{
+position:absolute;
+left:15px;
+top:11px;
+color:#bda9ff
+}
+
+.search input{
+width:100%;
+height:44px;
+border-radius:22px;
+border:1px solid #4930a8;
+background:#09092c;
+color:#fff;
+padding:0 18px 0 40px;
+outline:none
+}
+
+main{
+max-width:1100px;
+margin:auto;
+padding:30px 25px
+}
+
+.hero{
+min-height:390px;
+border:2px solid #633bff;
+border-radius:22px;
+overflow:hidden;
+display:grid;
+grid-template-columns:48% 52%;
+background:#06062a;
+box-shadow:0 0 30px #006eff55,0 0 25px #ff00cc33
+}
+
+.hero-img{
+background:url('ludo-card.jpg') center/cover no-repeat;
+min-height:390px
+}
+
+.hero-info{
+padding:38px;
+display:flex;
+flex-direction:column;
+justify-content:center
+}
+
+.kicker{
+color:#ff2cff;
+font-weight:bold;
+margin-bottom:12px
+}
+
+.hero h1{
+font-size:44px;
+margin-bottom:12px
+}
+
+.hero p{
+color:#bbb7e8;
+line-height:1.6;
+margin:10px 0 17px
+}
+
+.tags{
+display:flex;
+gap:8px;
+flex-wrap:wrap;
+margin-bottom:10px
+}
+
+.tag{
+padding:6px 13px;
+border:1px solid #9d24ff;
+border-radius:18px;
+color:#dba7ff;
+font-size:11px
+}
+
+.primary{
+display:inline-block;
+width:max-content;
+padding:13px 24px;
+border-radius:14px;
+color:#fff;
+text-decoration:none;
+font-weight:bold;
+background:linear-gradient(90deg,#ff00cc,#006eff);
+box-shadow:0 0 18px #ff00cc55;
+margin-top:8px
+}
+
+.section-title{
+display:flex;
+align-items:center;
+gap:15px;
+margin:35px 0 22px
+}
+
+.section-title h2{
+font-size:35px;
+font-style:italic;
+background:linear-gradient(90deg,#ff00e6,#006eff);
+-webkit-background-clip:text;
+color:transparent
+}
+
+.line{
+height:2px;
+flex:1;
+background:linear-gradient(90deg,#ff00dd,#006eff,transparent)
+}
+
+.about-box{
+background:linear-gradient(180deg,#0a0b39,#05051f);
+border:1px solid #6d24ff;
+border-radius:18px;
+padding:28px;
+box-shadow:0 0 20px #4715a833
+}
+
+.about-box p{
+color:#aaa9d0;
+line-height:1.8;
+font-size:15px
+}
+
+.features{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:18px
+}
+
+.feature{
+background:linear-gradient(180deg,#0a0b39,#05051f);
+border:1px solid #6d24ff;
+border-radius:15px;
+padding:25px;
+box-shadow:0 0 15px #4715a833;
+transition:.25s
+}
+
+.feature:hover{
+transform:translateY(-5px);
+box-shadow:0 0 25px #7b00ff77
+}
+
+.feature .icon{
+font-size:35px;
+margin-bottom:12px
+}
+
+.feature h3{
+margin-bottom:9px
+}
+
+.feature p{
+color:#aaa9d0;
+line-height:1.5;
+font-size:13px
+}
+
+.back{
+display:block;
+width:220px;
+text-align:center;
+margin:35px auto;
+padding:13px;
+border-radius:14px;
+color:#fff;
+text-decoration:none;
+font-weight:bold;
+background:linear-gradient(90deg,#9d00ff,#006eff);
+box-shadow:0 0 18px #006eff55
+}
+
+footer{
+max-width:1100px;
+margin:auto;
+padding:25px;
+display:flex;
+justify-content:space-between;
+color:#77779d;
+font-size:12px
+}
+
+footer a{
+color:#aaa6d2;
+text-decoration:none;
+margin:0 8px
+}
+
+@media(max-width:800px){
+header{
+padding:8px 15px;
+gap:12px
+}
+
+nav a{
+padding:10px 8px;
+font-size:12px
+}
+
+.search{
+width:180px
+}
+
+.hero{
+grid-template-columns:1fr
+}
+
+.hero-img{
+min-height:250px
+}
+
+.features{
+grid-template-columns:1fr
+}
+}
+
+@media(max-width:600px){
+header{
+height:auto;
+flex-wrap:wrap;
+justify-content:center
+}
+
+nav{
+justify-content:center;
+order:3;
+flex-basis:100%
+}
+
+.search{
+width:100%
+}
+
+.hero-info{
+padding:25px
+}
+
+.hero h1{
+font-size:34px
+}
+
+footer{
+flex-direction:column;
+gap:15px;
+text-align:center
+}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+<a class="logo" href="games.html">
+<img src="super-reaper-logo.png" alt="SUPER REAPER">
+</a>
+
+<nav>
+<a href="games.html">⌂ Home</a>
+<a class="active" href="games.html">🎮 All Games</a>
+<a href="about.html">♟ About Us</a>
+<a href="#">✉ Contact</a>
+</nav>
+
+<div class="search">
+<span>⌕</span>
+<input placeholder="Search games...">
+</div>
+
+</header>
+
+<main>
+
+<section class="hero">
+
+<div class="hero-img"></div>
+
+<div class="hero-info">
+
+<div class="kicker">★ STRATEGY GAME</div>
+
+<h1>LUDO STRIKE</h1>
+
+<div class="tags">
+<span class="tag">Strategy</span>
+<span class="tag">Creative</span>
+<span class="tag">Board Game</span>
+<span class="tag">2-4 Players</span>
+</div>
+
+<p>
+Roll the dice, plan your moves, capture your opponents,
+and race your tokens home to claim victory!
+</p>
+
+<a class="primary" href="#">
+PLAY GAME &nbsp; →
+</a>
+
+</div>
+
+</section>
+
+
+<div class="section-title">
+<h2>🎲 ABOUT THE GAME</h2>
+<div class="line"></div>
+</div>
+
+<section class="about-box">
+
+<p>
+Ludo Strike is a classic strategy board game. Designed for two to
+four players, the game features a square board divided into four
+vibrant, colored yards: blue, yellow, green, and red. Each player
+controls four tokens and aims to race them clockwise around the track.
+<br><br>
+
+Movement relies on the roll of a single six-sided die. Players can
+actively capture opponents' pieces by landing on the same square,
+forcing them back to the start. Blending luck and clever planning,
+the first person to safely guide all four tokens to the center home wins.
+</p>
+
+</section>
+
+
+<div class="section-title">
+<h2>🏆 GAME FEATURES</h2>
+<div class="line"></div>
+</div>
+
+<section class="features">
+
+<div class="feature">
+<div class="icon">🎲</div>
+<h3>Roll the Dice</h3>
+<p>
+Use the six-sided die to determine how far your tokens can move
+around the board.
+</p>
+</div>
+
+<div class="feature">
+<div class="icon">⚔️</div>
+<h3>Capture Opponents</h3>
+<p>
+Land on an opponent's square to send their token back to the start
+and gain an advantage.
+</p>
+</div>
+
+<div class="feature">
+<div class="icon">🏆</div>
+<h3>Race to Victory</h3>
+<p>
+Guide all four of your tokens safely around the board and reach the
+center home before your opponents.
+</p>
+</div>
+
+</section>
+
+
+<a class="back" href="games.html">
+← BACK TO ALL GAMES
+</a>
+
+</main>
+
+<footer>
+
+<div>© 2026 SUPER REAPER</div>
+
+<div>
+<a href="about.html">About Us</a> |
+<a href="#">Contact</a> |
+<a href="#">Privacy Policy</a> |
+<a href="#">Terms & Conditions</a>
+</div>
+
+<div>
+Game On. Reaper's On.
+</div>
+
+</footer>
+
+</body>
+</html>

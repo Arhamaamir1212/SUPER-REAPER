@@ -1,0 +1,716 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<title>SUPER REAPER - Minecraft</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    font-family:Arial,sans-serif
+}
+
+html{
+    scroll-behavior:smooth
+}
+
+body{
+    color:#fff;
+    min-height:100vh;
+    background:
+    radial-gradient(circle at 10% 20%,#ff00cc33,transparent 28%),
+    radial-gradient(circle at 90% 30%,#006eff33,transparent 30%),
+    linear-gradient(135deg,#03000e,#060529 55%,#020b20)
+}
+
+/* HEADER */
+
+header{
+    height:88px;
+    display:flex;
+    align-items:center;
+    gap:25px;
+    padding:8px 35px;
+    background:rgba(2,2,22,.96);
+    border-bottom:2px solid #244cff;
+    box-shadow:0 0 25px #006eff44;
+    position:sticky;
+    top:0;
+    z-index:10
+}
+
+.logo img{
+    height:72px;
+    width:auto;
+    filter:drop-shadow(0 0 10px #006eff)
+}
+
+nav{
+    display:flex;
+    gap:7px;
+    flex:1
+}
+
+nav a{
+    color:#c5baff;
+    text-decoration:none;
+    padding:13px 16px;
+    border-radius:16px;
+    font-size:14px
+}
+
+nav a:hover,
+nav a.active{
+    color:#fff;
+    background:linear-gradient(90deg,#9c00ff,#5b27ff);
+    box-shadow:0 0 18px #8b00ff88
+}
+
+.search{
+    position:relative;
+    width:240px
+}
+
+.search span{
+    position:absolute;
+    left:15px;
+    top:11px;
+    color:#bda9ff
+}
+
+.search input{
+    width:100%;
+    height:44px;
+    border-radius:22px;
+    border:1px solid #4930a8;
+    background:#09092c;
+    color:#fff;
+    padding:0 18px 0 40px;
+    outline:none
+}
+
+/* MAIN */
+
+main{
+    max-width:1100px;
+    margin:auto;
+    padding:30px 25px
+}
+
+/* GAME HERO */
+
+.game-hero{
+    border:2px solid #633bff;
+    border-radius:22px;
+    overflow:hidden;
+    display:grid;
+    grid-template-columns:42% 58%;
+    min-height:350px;
+    background:#06062a;
+    box-shadow:
+    0 0 30px #006eff55,
+    0 0 25px #ff00cc33
+}
+
+.game-image{
+    min-height:350px;
+    background:url('minecraft-card.jpg') center/cover no-repeat;
+    border-right:2px solid #633bff
+}
+
+.game-info{
+    padding:35px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center
+}
+
+.kicker{
+    color:#ff2cff;
+    font-weight:bold;
+    margin-bottom:12px;
+    letter-spacing:1px
+}
+
+.game-info h1{
+    font-size:48px;
+    font-style:italic;
+    margin-bottom:10px;
+    background:linear-gradient(90deg,#ff00e6,#006eff);
+    -webkit-background-clip:text;
+    color:transparent
+}
+
+.game-info p{
+    color:#bbb7e8;
+    line-height:1.6;
+    margin-bottom:18px
+}
+
+.tags{
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+    margin-bottom:18px
+}
+
+.tag{
+    padding:6px 13px;
+    border:1px solid #9d24ff;
+    border-radius:18px;
+    color:#dba7ff;
+    font-size:11px
+}
+
+.primary{
+    width:max-content;
+    padding:13px 24px;
+    border-radius:14px;
+    color:#fff;
+    text-decoration:none;
+    font-weight:bold;
+    background:linear-gradient(90deg,#ff00cc,#006eff);
+    box-shadow:0 0 18px #ff00cc55;
+    transition:.25s
+}
+
+.primary:hover{
+    transform:translateY(-3px);
+    box-shadow:0 0 25px #8b00ff99
+}
+
+/* ABOUT GAME */
+
+.section-title{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    margin:32px 0 22px
+}
+
+.section-title h2{
+    font-size:35px;
+    font-style:italic;
+    background:linear-gradient(90deg,#ff00e6,#006eff);
+    -webkit-background-clip:text;
+    color:transparent
+}
+
+.line{
+    height:2px;
+    flex:1;
+    background:linear-gradient(
+        90deg,
+        #ff00dd,
+        #006eff,
+        transparent
+    )
+}
+
+.about-card{
+    background:linear-gradient(180deg,#0a0b39,#05051f);
+    border:1px solid #6d24ff;
+    border-radius:15px;
+    padding:30px;
+    box-shadow:0 0 15px #4715a833
+}
+
+.about-card p{
+    color:#aaa9d0;
+    font-size:15px;
+    line-height:1.9;
+    margin-bottom:18px
+}
+
+.about-card p:last-child{
+    margin-bottom:0
+}
+
+/* GAME MODES */
+
+.mode-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:18px
+}
+
+.mode-card{
+    background:linear-gradient(180deg,#0a0b39,#05051f);
+    border:1px solid #6d24ff;
+    border-radius:15px;
+    padding:25px;
+    transition:.25s
+}
+
+.mode-card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 0 25px #7b00ff77
+}
+
+.mode-icon{
+    font-size:40px;
+    margin-bottom:15px
+}
+
+.mode-card h3{
+    color:#dba7ff;
+    font-size:20px;
+    margin-bottom:12px
+}
+
+.mode-card p{
+    color:#aaa9d0;
+    font-size:13px;
+    line-height:1.7
+}
+
+/* FEATURES */
+
+.feature-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px
+}
+
+.feature{
+    text-align:center;
+    padding:22px 12px;
+    background:#050520;
+    border:1px solid #282b77;
+    border-radius:14px
+}
+
+.feature .icon{
+    font-size:30px;
+    color:#d92cff;
+    margin-bottom:10px
+}
+
+.feature b{
+    display:block;
+    font-size:12px;
+    color:#d7cfff;
+    margin-bottom:7px
+}
+
+.feature span{
+    font-size:10px;
+    color:#8f8daf
+}
+
+/* BACK BUTTON */
+
+.back{
+    text-align:center;
+    margin:35px 0 25px
+}
+
+.back a{
+    display:inline-block;
+    color:#fff;
+    text-decoration:none;
+    padding:13px 25px;
+    border-radius:14px;
+    font-weight:bold;
+    background:linear-gradient(90deg,#8d00ff,#006eff);
+    box-shadow:0 0 18px #006eff55;
+    transition:.25s
+}
+
+.back a:hover{
+    transform:translateY(-3px);
+    box-shadow:0 0 25px #8b00ff88
+}
+
+/* QUICK BAR */
+
+.quick{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    border-top:1px solid #282b77;
+    border-bottom:1px solid #282b77;
+    margin:0 -25px;
+    padding:20px 25px;
+    background:#050520
+}
+
+.quick div{
+    text-align:center;
+    border-right:1px solid #252660;
+    padding:10px
+}
+
+.quick div:last-child{
+    border:0
+}
+
+.icon{
+    font-size:28px;
+    color:#d92cff
+}
+
+.quick b{
+    display:block;
+    margin:7px 0;
+    font-size:12px;
+    color:#d7cfff
+}
+
+.quick span{
+    font-size:10px;
+    color:#8f8daf
+}
+
+/* FOOTER */
+
+footer{
+    max-width:1100px;
+    margin:auto;
+    padding:25px;
+    display:flex;
+    justify-content:space-between;
+    color:#77779d;
+    font-size:12px
+}
+
+footer a{
+    color:#aaa6d2;
+    text-decoration:none;
+    margin:0 8px
+}
+
+footer a:hover{
+    color:#ff2cff
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+    header{
+        padding:8px 15px;
+        gap:12px
+    }
+
+    nav a{
+        padding:10px 8px;
+        font-size:12px
+    }
+
+    .search{
+        width:180px
+    }
+
+    .game-hero{
+        grid-template-columns:1fr
+    }
+
+    .game-image{
+        min-height:280px;
+        border-right:0;
+        border-bottom:2px solid #633bff
+    }
+
+    .feature-grid{
+        grid-template-columns:repeat(2,1fr)
+    }
+}
+
+@media(max-width:650px){
+
+    header{
+        height:auto;
+        flex-wrap:wrap;
+        justify-content:center
+    }
+
+    nav{
+        justify-content:center;
+        order:3;
+        flex-basis:100%
+    }
+
+    .search{
+        width:100%
+    }
+
+    .game-info{
+        padding:25px
+    }
+
+    .game-info h1{
+        font-size:38px
+    }
+
+    .mode-grid{
+        grid-template-columns:1fr
+    }
+
+    .feature-grid{
+        grid-template-columns:1fr
+    }
+
+    .quick{
+        grid-template-columns:repeat(2,1fr)
+    }
+
+    footer{
+        flex-direction:column;
+        gap:15px;
+        text-align:center
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+<a class="logo" href="games.html">
+<img src="super-reaper-logo.png" alt="SUPER REAPER">
+</a>
+
+<nav>
+<a href="index.html">⌂ Home</a>
+<a class="active" href="games.html">🎮 All Games</a>
+<a href="about.html">♟ About Us</a>
+<a href="contact.html">✉ Contact</a>
+</nav>
+
+<div class="search">
+<span>⌕</span>
+<input
+id="topSearch"
+placeholder="Search games..."
+onkeydown="if(event.key==='Enter')location.href='games.html'">
+</div>
+
+</header>
+
+
+<main>
+
+<!-- MINECRAFT TOP -->
+
+<section class="game-hero">
+
+<div class="game-image"></div>
+
+<div class="game-info">
+
+<div class="kicker">★ FEATURED GAME</div>
+
+<h1>MINECRAFT</h1>
+
+<p>Build · Explore · Survive</p>
+
+<div class="tags">
+<span class="tag">Survival</span>
+<span class="tag">Creative</span>
+<span class="tag">Sandbox</span>
+</div>
+
+<a class="primary" href="#">
+PLAY MINECRAFT &nbsp; →
+</a>
+
+</div>
+
+</section>
+
+
+<!-- ABOUT THE GAME -->
+
+<div class="section-title">
+
+<h2>🎮 ABOUT THE GAME</h2>
+
+<div class="line"></div>
+
+</div>
+
+
+<section class="about-card">
+
+<p>
+Minecraft is a universally acclaimed sandbox video game that
+drops players into an infinite, blocky 3D world.
+</p>
+
+<p>
+With no set objectives, players enjoy total freedom to explore
+diverse biomes, gather raw materials, and reshape their
+environment block by block.
+</p>
+
+<p>
+The game features two primary modes: <b>Creative Mode</b>,
+which provides unlimited resources and limitless building,
+and <b>Survival Mode</b>, where players must craft tools,
+manage hunger, and defend against hostile nighttime creatures
+like zombies and creepers.
+</p>
+
+</section>
+
+
+<!-- GAME MODES -->
+
+<div class="section-title">
+
+<h2>⚔ GAME MODES</h2>
+
+<div class="line"></div>
+
+</div>
+
+
+<section class="mode-grid">
+
+<div class="mode-card">
+
+<div class="mode-icon">🏗️</div>
+
+<h3>CREATIVE MODE</h3>
+
+<p>
+Build whatever you can imagine with unlimited resources.
+Fly around the world, create massive structures, and focus
+entirely on creativity without worrying about survival.
+</p>
+
+</div>
+
+
+<div class="mode-card">
+
+<div class="mode-icon">🧟</div>
+
+<h3>SURVIVAL MODE</h3>
+
+<p>
+Gather materials, craft tools, manage your resources,
+explore dangerous areas, and defend yourself from hostile
+creatures as you fight to survive.
+</p>
+
+</div>
+
+</section>
+
+
+<!-- FEATURES -->
+
+<div class="section-title">
+
+<h2>✦ GAME FEATURES</h2>
+
+<div class="line"></div>
+
+</div>
+
+
+<section class="feature-grid">
+
+<div class="feature">
+<div class="icon">🌍</div>
+<b>INFINITE WORLD</b>
+<span>Explore huge blocky worlds.</span>
+</div>
+
+<div class="feature">
+<div class="icon">⛏️</div>
+<b>CRAFTING</b>
+<span>Gather resources and craft.</span>
+</div>
+
+<div class="feature">
+<div class="icon">🏠</div>
+<b>BUILDING</b>
+<span>Create anything you imagine.</span>
+</div>
+
+<div class="feature">
+<div class="icon">👾</div>
+<b>HOSTILE MOBS</b>
+<span>Survive dangerous creatures.</span>
+</div>
+
+</section>
+
+
+<!-- BACK -->
+
+<div class="back">
+
+<a href="games.html">
+← BACK TO ALL GAMES
+</a>
+
+</div>
+
+
+<!-- QUICK BAR -->
+
+<section class="quick">
+
+<div>
+<div class="icon">🌍</div>
+<b>EXPLORE</b>
+<span>Discover new biomes.</span>
+</div>
+
+<div>
+<div class="icon">⛏</div>
+<b>CRAFT</b>
+<span>Collect and create.</span>
+</div>
+
+<div>
+<div class="icon">🏗</div>
+<b>BUILD</b>
+<span>Make your own world.</span>
+</div>
+
+<div>
+<div class="icon">⚔</div>
+<b>SURVIVE</b>
+<span>Fight hostile mobs.</span>
+</div>
+
+<div>
+<div class="icon">🎮</div>
+<b>PLAY</b>
+<span>Start your adventure.</span>
+</div>
+
+</section>
+
+</main>
+
+
+<footer>
+
+<div>© 2026 SUPER REAPER</div>
+
+<div>
+<a href="about.html">About Us</a> |
+<a href="contact.html">Contact</a> |
+<a href="#">Privacy Policy</a> |
+<a href="#">Terms & Conditions</a>
+</div>
+
+<div>Game On. Reaper's On.</div>
+
+</footer>
+
+</body>
+</html>
+```
+
